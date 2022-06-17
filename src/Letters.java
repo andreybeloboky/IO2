@@ -3,6 +3,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 public class Letters {
+    /**
+     * @param readText - this value contains the text (charter), which saves on the computer;
+     * @return - array of integer, which contains numbers letters using in the text;
+     * @throws IOException - exception, which thrown when bufferedReader is mistaken
+     */
     public static int[] findLetters(BufferedReader readText) throws IOException {
         int a = 0;
         int e = 0;
@@ -37,6 +42,11 @@ public class Letters {
         return new int[]{a, e, i, o, y, u};
     }
 
+    /**
+     * @param read - this value contains the text(in bytes), which saves on the computer;
+     * @return - array of longer, which contains numbers letters using in the text;
+     * @throws IOException - exception, which thrown when BufferedInputStream is mistaken
+     */
     public static long[] findLettersInputStream(BufferedInputStream read) throws IOException {
         long a = 0;
         long e = 0;
@@ -46,33 +56,33 @@ public class Letters {
         long u = 0;
         long z;
         while ((z = read.read()) != -1) {
-                if ((char) z == 'a') {
-                    a++;
-                }
-                if ((char) z == 'e') {
-                    e++;
-                }
-                if ((char) z == 'i') {
-                    i++;
-                }
-                if ((char) z == 'o') {
-                    o++;
-                }
-                if ((char) z == 'y') {
-                    y++;
-                }
-                if ((char) z == 'u') {
-                    u++;
-                }
+            if ((char) z == 'a') {
+                a++;
             }
+            if ((char) z == 'e') {
+                e++;
+            }
+            if ((char) z == 'i') {
+                i++;
+            }
+            if ((char) z == 'o') {
+                o++;
+            }
+            if ((char) z == 'y') {
+                y++;
+            }
+            if ((char) z == 'u') {
+                u++;
+            }
+        }
         return new long[]{a, e, i, o, y, u};
     }
 
     public static String[] returnString() {
         String[] letters = {"a", "e", "i", "o", "y", "u"};
         String[] fullName = new String[letters.length];
-        for (int i = 0; i<letters.length;i++) {
-          fullName[i] = "Numbers of " + letters[i] + " is ";
+        for (int i = 0; i < letters.length; i++) {
+            fullName[i] = "Numbers of " + letters[i] + " is ";
         }
         return fullName;
     }
