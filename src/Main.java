@@ -23,6 +23,7 @@ public class Main {
             throw new RuntimeException(e);
         }
         System.out.println();
+
         // small file
         File file1 = new File("textSmall.txt");
         try (FileWriter write = new FileWriter(file1);

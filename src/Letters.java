@@ -1,6 +1,8 @@
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Letters {
     /**
@@ -9,12 +11,7 @@ public class Letters {
      * @throws IOException - exception, which thrown when bufferedReader is mistaken
      */
     public static int[] findLetters(BufferedReader readText) throws IOException {
-        int a = 0;
-        int e = 0;
-        int i = 0;
-        int o = 0;
-        int y = 0;
-        int u = 0;
+        int a = 0, e = 0, i = 0, o = 0, y = 0, u = 0;
         String line;
         while ((line = readText.readLine()) != null) {
             char[] line1 = line.toCharArray();
@@ -48,12 +45,7 @@ public class Letters {
      * @throws IOException - exception, which thrown when BufferedInputStream is mistaken
      */
     public static long[] findLettersInputStream(BufferedInputStream read) throws IOException {
-        long a = 0;
-        long e = 0;
-        long i = 0;
-        long o = 0;
-        long y = 0;
-        long u = 0;
+        long a = 0, e = 0, i = 0, o = 0, y = 0, u = 0;
         long z;
         while ((z = read.read()) != -1) {
             if ((char) z == 'a') {
