@@ -10,33 +10,42 @@ public class Letters {
      * @return - array of integer, which contains numbers letters using in the text;
      * @throws IOException - exception, which thrown when bufferedReader is mistaken
      */
-    public static int[] findLetters(BufferedReader readText) throws IOException {
+    public static HashMap<Character, Integer> findLetters(BufferedReader readText) throws IOException {
+        HashMap<Character, Integer> letters = new HashMap<>();
         int a = 0, e = 0, i = 0, o = 0, y = 0, u = 0;
+        letters.put('a', a);
+        letters.put('e', e);
+        letters.put('i', i);
+        letters.put('o', o);
+        letters.put('y', y);
+        letters.put('u', u);
         String line;
         while ((line = readText.readLine()) != null) {
             char[] line1 = line.toCharArray();
             for (char value : line1) {
                 if (value == 'a') {
-                    a++;
+                    letters.replace('a', a++);
                 }
                 if (value == 'e') {
-                    e++;
+                    letters.replace('e', e++);
                 }
                 if (value == 'i') {
-                    i++;
+                    letters.replace('i', i++);
+
                 }
                 if (value == 'o') {
-                    o++;
+                    letters.replace('o', o++);
+
                 }
                 if (value == 'y') {
-                    y++;
+                    letters.replace('y', y++);
                 }
                 if (value == 'u') {
-                    u++;
+                    letters.replace('u', u++);
                 }
             }
         }
-        return new int[]{a, e, i, o, y, u};
+        return letters;
     }
 
     /**
@@ -44,38 +53,35 @@ public class Letters {
      * @return - array of longer, which contains numbers letters using in the text;
      * @throws IOException - exception, which thrown when BufferedInputStream is mistaken
      */
-    public static long[] findLettersInputStream(BufferedInputStream read) throws IOException {
-        long a = 0, e = 0, i = 0, o = 0, y = 0, u = 0;
-        long z;
-        while ((z = read.read()) != -1) {
-            if ((char) z == 'a') {
-                a++;
+    public static HashMap<Character, Integer> findLettersInputStream(BufferedInputStream read) throws IOException {
+        HashMap<Character, Integer> letters = new HashMap<>();
+        int a = 0, e = 0, i = 0, o = 0, y = 0, u = 0, number;
+        letters.put('a', a);
+        letters.put('e', e);
+        letters.put('i', i);
+        letters.put('o', o);
+        letters.put('y', y);
+        letters.put('u', u);
+        while ((number = read.read()) != -1) {
+            if ((char) number == 'a') {
+                letters.replace('a', a++);
             }
-            if ((char) z == 'e') {
-                e++;
+            if ((char) number == 'e') {
+                letters.replace('e', e++);
             }
-            if ((char) z == 'i') {
-                i++;
+            if ((char) number == 'i') {
+                letters.replace('i', i++);
             }
-            if ((char) z == 'o') {
-                o++;
+            if ((char) number == 'o') {
+                letters.replace('o', o++);
             }
-            if ((char) z == 'y') {
-                y++;
+            if ((char) number == 'y') {
+                letters.replace('y', y++);
             }
-            if ((char) z == 'u') {
-                u++;
+            if ((char) number == 'u') {
+                letters.replace('u', u++);
             }
         }
-        return new long[]{a, e, i, o, y, u};
-    }
-
-    public static String[] returnString() {
-        String[] letters = {"a", "e", "i", "o", "y", "u"};
-        String[] fullName = new String[letters.length];
-        for (int i = 0; i < letters.length; i++) {
-            fullName[i] = "Numbers of " + letters[i] + " is ";
-        }
-        return fullName;
+        return letters;
     }
 }
