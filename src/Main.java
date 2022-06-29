@@ -15,6 +15,7 @@ public class Main {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        System.out.println("kek");
         try (BufferedInputStream read = new BufferedInputStream(new FileInputStream(file), 200)) {
             HashMap<Character, Integer> numbers = Letters.findLettersInputStream(read);
             for (Map.Entry<Character, Integer> value : numbers.entrySet()) {
