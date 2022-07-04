@@ -4,7 +4,6 @@ import java.util.Map;
 
 public class Main {
     private static Object Charsets;
-
     public static void main(String[] args) {
         File file = new File("text.txt");
         // big file
@@ -15,9 +14,9 @@ public class Main {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("kek");
+
         try (BufferedInputStream read = new BufferedInputStream(new FileInputStream(file), 200)) {
-            HashMap<Character, Integer> numbers = Letters.findLettersInputStream(read);
+            HashMap<Character, Integer> numbers = LettersCalculator.optimizedCountVowels(read);
             for (Map.Entry<Character, Integer> value : numbers.entrySet()) {
                 System.out.println(value.getKey() + " " + value.getValue());
             }
@@ -35,7 +34,7 @@ public class Main {
             throw new RuntimeException(e);
         }
         try (BufferedReader readText2 = new BufferedReader(new FileReader(file1))) {
-            HashMap<Character, Integer> numbers = Letters.findLetters(readText2);
+            HashMap<Character, Integer> numbers = LettersCalculator.countVowels(readText2);
             for (Map.Entry<Character, Integer> value : numbers.entrySet()) {
                 System.out.println(value.getKey() + " " + value.getValue());
             }
