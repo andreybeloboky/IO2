@@ -2,12 +2,13 @@ import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 public class LettersCalculator {
     /**
      * @param letters - map which saving vowel letters;
      */
-    private static void theSamePartOfCode(HashMap<Character, Integer> letters) {
+   private static void makeVowels(HashMap<Character, Integer> letters) {
         letters.put('a', 0);
         letters.put('e', 0);
         letters.put('i', 0);
@@ -23,14 +24,12 @@ public class LettersCalculator {
      */
     public static HashMap<Character, Integer> countVowels(BufferedReader readText) throws IOException {
         HashMap<Character, Integer> letters = new HashMap<>();
-        theSamePartOfCode(letters);
+        makeVowels(letters);
         String line;
         while ((line = readText.readLine()) != null) {
-            char[] line1 = line.toCharArray();
-            for (char value : line1) {
-                if (letters.containsKey(value)) {
-                    letters.replace(value, letters.get(value) + 1);
-                }
+            char[] chars = line.toCharArray();
+            for (char value : chars) {
+                incrementIfExists(letters, value);
             }
         }
         return letters;
@@ -43,13 +42,21 @@ public class LettersCalculator {
      */
     public static HashMap<Character, Integer> optimizedCountVowels(BufferedInputStream read) throws IOException {
         HashMap<Character, Integer> letters = new HashMap<>();
-        theSamePartOfCode(letters);
+        makeVowels(letters);
         int number;
         while ((number = read.read()) != -1) {
-            if (letters.containsKey((char) number)) {
-                letters.replace((char) number, letters.get((char) number) + 1);
-            }
+            incrementIfExists(letters, number);
         }
         return letters;
+    }
+
+    /**
+     * @param letters - map which saving vowel letters;
+     * @param number  is byte from file;
+     */
+    public static void incrementIfExists(HashMap<Character, Integer> letters, int number) {
+        if (letters.containsKey((char) number)) {
+            letters.replace((char) number, letters.get((char) number) + 1);
+        }
     }
 }
